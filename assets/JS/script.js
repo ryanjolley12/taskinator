@@ -6,14 +6,24 @@ var taskFormHandler = function(event) {
   var taskNameInput = document.querySelector("input[name='task-name']").value;
   var taskTypeInput = document.querySelector("select[name='task-type']").value;
 
+
+
   // package up data as an object
   var taskDataObj = {
       name: taskNameInput,
       type: taskTypeInput
   };
-
   // send it as an argument to createTaskEl
   createTaskEl(taskDataObj);
+
+    // check if input values are empty strings
+  if (!taskNameInput || !taskTypeInput) {
+    alert("You need to fill out the task form!");
+    return false;
+  }
+
+  formEl.reset();
+
 };
 
 var createTaskEl = function (taskDataObj) {
@@ -32,3 +42,27 @@ var createTaskEl = function (taskDataObj) {
 };
 
 formEl.addEventListener("submit", taskFormHandler);
+
+/*
+//will run
+if (true) {
+  console.log("is true true?");
+}
+
+//won't run
+if (false) {
+  console.log('is false true?');
+}
+
+//will run
+if (3 === 10 || "a" === "a") {
+console.log("does 3 equal 10?");
+console.log("does the letter 'a' equal the letter 'a'?");
+}
+
+//won't run
+if (3 === 10 && "a" === "a") {
+  console.log("does 3 equal 10");
+  console.log("does 'a' equal 'a'?")
+}
+*/
